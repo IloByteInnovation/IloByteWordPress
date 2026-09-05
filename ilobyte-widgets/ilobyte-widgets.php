@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       IloByte Widgets — Bookings & Store
- * Plugin URI:        https://www.ilobyte.com
+ * Plugin URI:        https://github.com/IloByteInnovation/IloByteWordPress
  * Description:       Embed your IloByte Pro appointment booking and mini store on any page with the [ilobyte_booking] and [ilobyte_shop] shortcodes. Requires an IloByte Pro workspace.
  * Version:           1.0.0
  * Requires at least: 5.8
