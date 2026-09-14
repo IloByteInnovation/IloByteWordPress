@@ -4,7 +4,7 @@ Tags: booking, appointments, store, ecommerce, nigeria
 Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,9 @@ On your own payment gateway's page, opened in a new tab — never inside the emb
 The embedded widgets are served by your IloByte Pro workspace. Details a visitor enters (name, phone, email, booking or order contents) are sent to your workspace to create the booking or order, under your business's own privacy policy.
 
 == Changelog ==
+
+= 1.0.1 =
+* The widget iframes now carry descriptive accessibility titles ("Appointment booking", "Online store") instead of a "Powered by" credit. No visitor-facing attribution remains.
 
 = 1.0.0 =
 * First release: booking and shop shortcodes, settings page, iframe auto-resize.

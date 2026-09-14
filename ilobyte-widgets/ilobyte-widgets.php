@@ -3,7 +3,7 @@
  * Plugin Name:       IloByte Widgets — Bookings & Store
  * Plugin URI:        https://github.com/IloByteInnovation/IloByteWordPress
  * Description:       Embed your IloByte Pro appointment booking and mini store on any page with the [ilobyte_booking] and [ilobyte_shop] shortcodes. Requires an IloByte Pro workspace.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            IloByte Innovation
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ILOBYTE_WIDGETS_VERSION', '1.0.0' );
+define( 'ILOBYTE_WIDGETS_VERSION', '1.0.1' );
 
 /**
  * Settings: the workspace address (https://yourbusiness.ilobyte.com), the
@@ -107,7 +107,7 @@ function ilobyte_widgets_settings_page() {
  * workspace; this plugin ships no remote code — only the bundled resize
  * listener below.
  */
-function ilobyte_widgets_render( $widget ) {
+function ilobyte_widgets_render( $widget, $title ) {
 	$host = get_option( 'ilobyte_widgets_host' );
 	$key  = get_option( 'ilobyte_widgets_key' );
 	$site = get_option( 'ilobyte_widgets_site' );
@@ -130,13 +130,13 @@ function ilobyte_widgets_render( $widget ) {
 	return sprintf(
 		'<iframe class="ilobyte-widget-frame" src="%s" style="width:100%%;border:0;display:block;min-height:320px;" loading="lazy" allow="payment" title="%s"></iframe>',
 		esc_url( $src ),
-		esc_attr__( 'Powered by IloByte Pro', 'ilobyte-widgets' )
+		esc_attr( $title )
 	);
 }
 
 add_shortcode( 'ilobyte_booking', function () {
-	return ilobyte_widgets_render( 'booking' );
+	return ilobyte_widgets_render( 'booking', __( 'Appointment booking', 'ilobyte-widgets' ) );
 } );
 add_shortcode( 'ilobyte_shop', function () {
-	return ilobyte_widgets_render( 'shop' );
+	return ilobyte_widgets_render( 'shop', __( 'Online store', 'ilobyte-widgets' ) );
 } );
