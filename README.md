@@ -11,6 +11,26 @@ double entry, no stock drift.
 |---|---|
 | `[ilobyte_booking]` | Appointment picker: service → day → time → details. Deposits collected through your own payment gateway. |
 | `[ilobyte_shop]` | Product grid with cart and checkout. Orders are priced by your workspace and paid through your own gateway. |
+| `[ilobyte_booking service="ITM-0002"]` | Booking calendar opened on one service. Without the attribute, `?service=ITM-0002` in the page URL does the same. |
+| `[ilobyte_price service="ITM-0002"]` | Live price, e.g. `₦30,000` — works inside other markup. |
+| `[ilobyte_duration service="ITM-0002"]` | Live duration, e.g. `60 Minutes`, `1 Hour 30 Minutes`, `2 Hours`; `format="short"` → `60 min`. |
+| `[ilobyte_menu]` | Service menu grouped by category. `category="Massages"`, `book_url="/book-a-session/"` (Book link per row → `?service=CODE`), `book_label`, `images="yes"`, `headings="no"`. |
+
+## Live prices
+
+IloByte Pro is the single source of truth for services, prices and durations;
+WordPress only displays them. The plugin reads
+`GET {api}/commerce/widget/menu` server-side with the publishable key
+(`X-API-Key`) and workspace slug (`X-Tenant-Id`):
+
+- cached in a transient for 10 minutes (keyed by API base + host + slug);
+- the last good copy is kept in a non-autoloaded option and served when the
+  API fails — a failed call is retried after 5 minutes;
+- never more than one API call per page request;
+- **Settings → IloByte Widgets → Refresh now** clears the cache and refetches.
+
+The API base defaults to `https://api.ilobyte.com/api/v1` and can be changed
+with the `ilobyte_widgets_api_base` filter (e.g. for staging).
 
 ## Setup
 

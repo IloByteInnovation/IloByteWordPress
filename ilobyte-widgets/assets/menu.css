@@ -1,0 +1,127 @@
+/**
+ * [ilobyte_menu] — minimal, theme-friendly styles. Fonts and colours are
+ * inherited from the theme; override the custom properties to adjust.
+ */
+.ilobyte-menu {
+	--ilobyte-menu-border: rgba(127, 127, 127, 0.25);
+	--ilobyte-menu-muted-opacity: 0.75;
+	--ilobyte-menu-image-size: 64px;
+	--ilobyte-menu-radius: 6px;
+}
+
+.ilobyte-menu__category + .ilobyte-menu__category {
+	margin-top: 2em;
+}
+
+.ilobyte-menu__title {
+	margin: 0 0 0.5em;
+}
+
+.ilobyte-menu__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ilobyte-menu__item {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	margin: 0;
+	padding: 0.75em 0;
+	border-bottom: 1px solid var(--ilobyte-menu-border);
+}
+
+.ilobyte-menu__item:last-child {
+	border-bottom: 0;
+}
+
+.ilobyte-menu__image {
+	flex: 0 0 auto;
+	width: var(--ilobyte-menu-image-size);
+	height: var(--ilobyte-menu-image-size);
+	object-fit: cover;
+	border-radius: var(--ilobyte-menu-radius);
+}
+
+.ilobyte-menu__image--empty {
+	display: block;
+	background: var(--ilobyte-menu-border);
+}
+
+.ilobyte-menu__body {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.ilobyte-menu__line {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.25em 1em;
+	margin: 0;
+}
+
+.ilobyte-menu__name {
+	font-weight: 600;
+}
+
+.ilobyte-menu__meta {
+	margin-left: auto;
+	white-space: nowrap;
+}
+
+.ilobyte-menu__duration {
+	opacity: var(--ilobyte-menu-muted-opacity);
+}
+
+.ilobyte-menu__price {
+	font-weight: 600;
+}
+
+.ilobyte-menu__description {
+	margin: 0.25em 0 0;
+	font-size: 0.9em;
+	opacity: var(--ilobyte-menu-muted-opacity);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ilobyte-menu__book {
+	flex: 0 0 auto;
+	display: inline-block;
+	padding: 0.4em 1em;
+	border: 1px solid currentColor;
+	border-radius: 999px;
+	line-height: 1.4;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.ilobyte-menu__book:hover,
+.ilobyte-menu__book:focus {
+	text-decoration: underline;
+}
+
+.ilobyte-menu__sr {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+@media (max-width: 480px) {
+	.ilobyte-menu__item {
+		flex-wrap: wrap;
+	}
+
+	.ilobyte-menu__book {
+		margin-left: auto;
+	}
+}
